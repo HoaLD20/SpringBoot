@@ -38,8 +38,12 @@ public class ProductService {
     }
 
     public Product updateProduct(Product product){
-        Product existingProduct=responsitory.findById(product.get).orElse(null);
-        existingProduct.setName
+        Product existingProduct=responsitory.findById(product.getId()).orElse(null);
+        assert existingProduct != null;
+        existingProduct.setName(product.getName());
+        existingProduct.setQuantity(product.getQuantity());
+        existingProduct.setPrice(product.getPrice());
+        return responsitory.save(existingProduct);
     }
 
 
